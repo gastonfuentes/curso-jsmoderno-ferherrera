@@ -50,3 +50,6 @@ const otrasFrutas = [...frutas] //pasamos una copia del arreglo y NO la referenc
 otrasFrutas.push('mangoo')
 
 console.table({ frutas, otrasFrutas });
+
+
+
