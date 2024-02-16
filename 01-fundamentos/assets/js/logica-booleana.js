@@ -45,3 +45,22 @@ console.log(regresaFalse() || regresaTrue()); //ejecuta las dos funciones porque
 console.log(false || false || true); // true
 
 console.warn('and y or para asignaciones');
+const soyUndefined = undefined;
+const soyNull = null;
+const soyFalso = false;
+
+const a1 = true && 'hola mundo' // la constante a1 toma el valor de hola mundo porque js le asigna el ultimo valor verdadero (obvio teniendo en cuenta que todas las condiciones son true)
+console.log({ a1 });
+
+const a2 = true && 'hola mundo' && 150 // a2 va a ser igual a 150
+console.log(a2);
+
+const a3 = true && soyFalso && 'hola mundo' //devuelve falso porque hay una condicion que no se cunmple en el AND
+console.log({ a3 });
+
+//ASIGNACIONS CON OR
+const a4 = soyFalso || 'ya no soy falso' // en el OR se le asigna el primer valor TRUE 
+console.log(a4);
+
+const a5 = soyFalso || 'ya no soy falso' || 'hola mundo'
+console.log({ a5 });
