@@ -44,17 +44,13 @@ class Persona {
     }
 }
 
+//extendemos de la clase persona
+class Heroe extends Persona {
+    clan;
+}
+
 const misho = new Persona('gaston', '1234', 'hola soy misho aca desde cordoba') // aqui creamos una instancia de esa clase 
 
+const misho2 = new Heroe('gaston2', '4321', 'soy gaston dos creado de la clase Heroe que extiende de la clase Persona')
 
-misho.quienSoy()
-misho.miFrase()
-
-misho.setComidaFavorita = 'la comida favorita de misho son los fideos'
-
-console.log(misho);
-
-misho.getComidaFavorita
-
-console.log(Persona._conteo);
-Persona.mensaje()
+console.log(misho2);
