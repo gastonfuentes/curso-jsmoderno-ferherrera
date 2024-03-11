@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blacki-jack-vite</title>
+</head>
+
+<body>
+
+  <main>
+
+    <header class="header">Blacki - jack</header>
+    <article class="sectorJuego">
+      <section class="sectorJuego__cartas sectorJuego__cartas--computadora" id="sectorJuegoComputadora">
+        <!-- <img class="carta" src="assets/cartas/3C.png" alt=""> -->
+        <!-- <img class="carta" src="assets/cartas/3C.png" alt="">
+                <img class="carta" src="assets/cartas/3C.png" alt="">
+                <img class="carta" src="assets/cartas/3C.png" alt=""> -->
+      </section>
+    </article>
+
+
+    <article class="sectorMensaje">
+      <h1 class="sectorJuego__titulo">Puntos banca <small class="sectorJuego__titulo__puntos"
+          id="puntajeComputadora">0</small>
+      </h1>
+      <strong id="ganadorPerdedor" class="sectorMensaje__mensaje"></strong>
+      <h1 class="sectorJuego__titulo sectorJuego__titulo--jugador">Puntos jugador <small
+          class="sectorJuego__titulo__puntos" id="puntajeJugador">0</small>
+      </h1>
+    </article>
+
+    <article class="sectorJuego">
+      <section class="sectorJuego__cartas sectorJuego__cartas--jugador" id="sectorJuegoJugador">
+        <!-- <img class="carta" src="assets/cartas/10H.png" alt=""> -->
+        <!--   <img class="carta" src="assets/cartas/10H.png" alt="">
+                <img class="carta" src="assets/cartas/10H.png" alt="">
+                <img class="carta" src="assets/cartas/10H.png" alt="">
+                <img class="carta" src="assets/cartas/10H.png" alt=""> -->
+      </section>
+    </article>
+
+    <article class="botones">
+      <section class="botones__section">
+        <button class="botones__boton--disabled botones__boton--botonPedir" id="botonPedir"
+          disabled="true">Pedir</button>
+        <button class="botones__boton--disabled botones__boton--botonDetener" id="botonDetener"
+          disabled="true">Plantarse</button>
+      </section>
+      <section>
+        <button class="botones__boton botones__boton--botonNuevo" id="botonNuevoJuego">Nuevo juego</button>
+      </section>
+    </article>
+
+  </main>
+
+  <div id="app"></div>
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
