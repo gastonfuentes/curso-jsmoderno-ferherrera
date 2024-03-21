@@ -30,7 +30,7 @@ const loadStore = () => {
 const getTodos = (filter = Filter.All) => {
     switch (filter) {
         case Filter.All:
-            return state.todos;
+            return [...state.todos];
 
         case Filter.Completed:
             return state.todos.filter(todo => todo.done);
@@ -48,7 +48,8 @@ const getTodos = (filter = Filter.All) => {
  * @param {String} description 
  */
 const addTodo = (description) => {
-    throw new Error('funcion no implementada')
+    if (!description) throw new Error('la descripcion es requerida')
+    state.todos.push(new Todo(description))
 
 }
 
