@@ -27,6 +27,22 @@ const loadStore = () => {
     throw new Error('funcion no implementada')
 }
 
+const getTodos = (filter = Filter.All) => {
+    switch (filter) {
+        case Filter.All:
+            return state.todos;
+
+        case Filter.Completed:
+            return state.todos.filter(todo => todo.done);
+
+        case Filter.Pending:
+            return state.todos.filter(todo => !todo.done);
+
+        default:
+            throw new Error(`el ${filter} no es valido`);
+    }
+}
+
 /**
  * funcion para crear un nuevo Todo
  * @param {String} description 
@@ -63,6 +79,7 @@ export default {
     initStore,
     toggleTodo,
     deleteTodo,
+    getTodos,
     deleteTodosCompleted,
     setFilter,
     getCurrentFIlter,
