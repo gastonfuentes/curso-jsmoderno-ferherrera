@@ -59,24 +59,30 @@ const toggleTodo = (todoId) => {
 
 
 const deleteTodo = (todoId) => {
-    throw new Error('funcion no implementada')
+    if (!todoId) throw new Error('todoId es necesario');
+    state.todos = state.todos.filter(todo => todo.id !== todoId)
 }
 
 
 const deleteTodosCompleted = () => {
-    throw new Error('funcion no implementada')
+    state.todos = state.todos.filter(todo => todo.done)
 }
 
+/**
+ * 
+ * @param {Filter} newFilter 
+ */
 const setFilter = (newFilter = Filter.All) => {
-    throw new Error('funcion no implementada')
+    state.filter = newFilter
 }
 
 const getCurrentFIlter = () => {
-    throw new Error('funcion no implementada')
+    return state.filter
 }
 
 
 export default {
+    addTodo,
     initStore,
     toggleTodo,
     deleteTodo,
