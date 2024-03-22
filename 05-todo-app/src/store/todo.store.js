@@ -54,7 +54,12 @@ const addTodo = (description) => {
 }
 
 const toggleTodo = (todoId) => {
-    throw new Error('funcion no implementada')
+    state.todos = state.todos.map((todo) => {
+        if (todo.id === todoId) {
+            todo.done = !todo.done
+        }
+        return todo;
+    })
 }
 
 
@@ -90,4 +95,5 @@ export default {
     deleteTodosCompleted,
     setFilter,
     getCurrentFIlter,
+    loadStore
 }
