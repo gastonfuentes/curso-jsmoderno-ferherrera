@@ -31,12 +31,13 @@ export const App = (elementId) => {
         displayTodos()
     })();
 
-    //Referencias html
-
+    //REFERENCIAS html
     //obtenemos el input para crear un todo
     const newDescriptionInput = document.querySelector(ElementsIDs.NewTodoInput)
+    //obtenemos el ul con la lista de Todos
+    const todoListUl = document.querySelector(ElementsIDs.TodoList)
 
-    //Listener o Escuchar eventos
+    //LISTENER o Escuchar eventos
     //escuchamos el evento keyup del input para crear un todo
     newDescriptionInput.addEventListener('keyup', (event) => {
 
@@ -52,6 +53,17 @@ export const App = (elementId) => {
         displayTodos()
         //limpiamos el input
         event.target.value = ''
+    })
+
+    todoListUl.addEventListener('click', (event) => {
+        /* console.log(event.target); */
+
+        //funcion que busca el primer padre que tenga un elemento en particular
+        const element = event.target.closest('[data-id]');
+        //obtenemos el id del Todo y lo mandamos a la funcion toggle y renderizamos todo de nuevo
+        const idTodo = element.getAttribute('data-id');
+        todoStore.toggleTodo(idTodo)
+        displayTodos()
     })
 
 }

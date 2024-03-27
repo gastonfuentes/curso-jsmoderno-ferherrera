@@ -53,6 +53,10 @@ const addTodo = (description) => {
 
 }
 
+/**
+ * funcion que cambia el estado del todo a completado o al reves
+ * @param {String} todoId id del Todo
+ */
 const toggleTodo = (todoId) => {
     state.todos = state.todos.map((todo) => {
         if (todo.id === todoId) {
