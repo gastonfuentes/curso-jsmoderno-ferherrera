@@ -4,7 +4,8 @@ import { renderTodos } from './use-cases';
 
 
 const ElementsIDs = {
-    TodoList: '.todo-list'
+    TodoList: '.todo-list',
+    NewTodoInput: '#new-todo-input'
 }
 
 /**
@@ -29,5 +30,28 @@ export const App = (elementId) => {
         document.querySelector(elementId).append(app);
         displayTodos()
     })();
+
+    //Referencias html
+
+    //obtenemos el input para crear un todo
+    const newDescriptionInput = document.querySelector(ElementsIDs.NewTodoInput)
+
+    //Listener o Escuchar eventos
+    //escuchamos el evento keyup del input para crear un todo
+    newDescriptionInput.addEventListener('keyup', (event) => {
+
+        //hacemos validaciones
+        //si no es la tecla enter entonces salimos
+        if (event.keyCode !== 13) return;
+        //quitamos los espacios adelante y al final con (trim) y luego preguntamos si esta vacio entonces salimos, si posee algo continua el codigo abajo
+        if (event.target.value.trim().length === 0) return;
+
+        //agregamos el todo nuevo cuando presiona enter y tenga algo escrito
+        todoStore.addTodo(event.target.value)
+        //renderizamos nuevamente los todos
+        displayTodos()
+        //limpiamos el input
+        event.target.value = ''
+    })
 
 }
