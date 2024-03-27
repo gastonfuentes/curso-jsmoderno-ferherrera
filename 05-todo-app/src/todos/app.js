@@ -56,13 +56,22 @@ export const App = (elementId) => {
     })
 
     todoListUl.addEventListener('click', (event) => {
-        /* console.log(event.target); */
+
 
         //funcion que busca el primer padre que tenga un elemento en particular
         const element = event.target.closest('[data-id]');
         //obtenemos el id del Todo y lo mandamos a la funcion toggle y renderizamos todo de nuevo
         const idTodo = element.getAttribute('data-id');
         todoStore.toggleTodo(idTodo)
+        displayTodos()
+    })
+
+    todoListUl.addEventListener('click', (event) => {
+        /* console.log(event.target.classList.value); */
+        if (event.target.classList.value !== 'destroy') return
+        const element = event.target.closest('[data-id]');
+        const idTodo = element.getAttribute('data-id');
+        todoStore.deleteTodo(idTodo)
         displayTodos()
     })
 

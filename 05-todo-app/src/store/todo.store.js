@@ -66,7 +66,10 @@ const toggleTodo = (todoId) => {
     })
 }
 
-
+/**
+ * funcion que borra un Todo
+ * @param {String} todoId Id del Todo a borrar
+ */
 const deleteTodo = (todoId) => {
     if (!todoId) throw new Error('todoId es necesario');
     state.todos = state.todos.filter(todo => todo.id !== todoId)
