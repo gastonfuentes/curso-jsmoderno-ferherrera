@@ -1,11 +1,13 @@
-import todoStore from '../store/todo.store';
+import todoStore, { Filter } from '../store/todo.store';
 import html from './app.html?raw'
 import { renderTodos } from './use-cases';
 
 
 const ElementsIDs = {
     TodoList: '.todo-list',
-    NewTodoInput: '#new-todo-input'
+    NewTodoInput: '#new-todo-input',
+    ButtonClearCompleted: '.clear-completed',
+    FilteresButtons: '.filtro',
 }
 
 /**
@@ -36,6 +38,10 @@ export const App = (elementId) => {
     const newDescriptionInput = document.querySelector(ElementsIDs.NewTodoInput)
     //obtenemos el ul con la lista de Todos
     const todoListUl = document.querySelector(ElementsIDs.TodoList)
+    //obtenemos el boton para borrar completados
+    const buttonClear = document.querySelector(ElementsIDs.ButtonClearCompleted)
+    //
+    const filteresLIs = document.querySelectorAll(ElementsIDs.FilteresButtons)
 
     //LISTENER o Escuchar eventos
     //escuchamos el evento keyup del input para crear un todo
@@ -73,6 +79,41 @@ export const App = (elementId) => {
         const idTodo = element.getAttribute('data-id');
         todoStore.deleteTodo(idTodo)
         displayTodos()
+    })
+
+    buttonClear.addEventListener('click', () => {
+        todoStore.deleteTodosCompleted()
+        displayTodos()
+    })
+
+    filteresLIs.forEach((li) => {
+        li.addEventListener('click', (event) => {
+            //limpiamos las clases selected            
+            filteresLIs.forEach((bu) => {
+                bu.classList.remove('selected')
+            })
+            //decimos que agregue la clase selected al LI que recibio el click
+            event.target.classList.add('selected')
+
+            /* console.log(event.target.text); */
+            switch (event.target.text) {
+                case 'Pendientes':
+                    todoStore.setFilter(Filter.Pending)
+                    break;
+                case 'Todos':
+                    todoStore.setFilter(Filter.All)
+                    break;
+                case 'Completados':
+                    todoStore.setFilter(Filter.Completed)
+                    break;
+
+                default:
+                    break;
+            }
+
+            displayTodos()
+
+        })
     })
 
 }
