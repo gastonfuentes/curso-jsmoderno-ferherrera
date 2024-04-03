@@ -1,6 +1,6 @@
 import todoStore, { Filter } from '../store/todo.store';
 import html from './app.html?raw'
-import { renderTodos } from './use-cases';
+import { renderTodos, renderCountPending } from './use-cases';
 
 
 const ElementsIDs = {
@@ -8,6 +8,7 @@ const ElementsIDs = {
     NewTodoInput: '#new-todo-input',
     ButtonClearCompleted: '.clear-completed',
     FilteresButtons: '.filtro',
+    PendingCountStrong: '#pending-count'
 }
 
 /**
@@ -22,7 +23,8 @@ export const App = (elementId) => {
         //renderizamos los todos con el filtro que posee actualmente
         const todos = todoStore.getTodos(todoStore.getCurrentFIlter())
         //llamamos al caso de uso renderTodos y mandamos el id del elem html y los todos
-        renderTodos(ElementsIDs.TodoList, todos)
+        renderTodos(ElementsIDs.TodoList, todos);
+        renderCountPending(ElementsIDs.PendingCountStrong)
     }
 
     //cuando la funcion app se llama / funcion autoinvocada
@@ -42,6 +44,8 @@ export const App = (elementId) => {
     const buttonClear = document.querySelector(ElementsIDs.ButtonClearCompleted)
     //
     const filteresLIs = document.querySelectorAll(ElementsIDs.FilteresButtons)
+    //
+    const pendingStrong = document.querySelector(ElementsIDs.PendingCountStrong)
 
     //LISTENER o Escuchar eventos
     //escuchamos el evento keyup del input para crear un todo
