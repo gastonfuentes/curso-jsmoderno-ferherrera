@@ -1,6 +1,7 @@
 import { heroes } from "../data/heroes";
 
 
+
 /**
  * 
  * @param {HTMLDivElement} element 
@@ -34,24 +35,33 @@ export const promiseComponents = (element) => {
     const id2 = '5d86371f25a058e5b1c8a65e'
 
 
-    //PROMESA SIMPLE ****************
+    //!PROMESA SIMPLE ****************
     /* 
     findHero(id1)
         .then(printHero)
         //modo mas largo pero es igual la sintaxis al .then
         .catch((unError) => error(unError))
- */
+    */
 
-    let hero1;
-    //CADENA DE PROMESAS *************
+    //!CADENA DE PROMESAS *************
     //cuando un then tiene un return con otro promesa se encadenan las promesas
+    /* let hero1;
     findHero(id1)
         .then(hero => {
             hero1 = hero
             return findHero(id2)
         })
         .then(hero2 => printTwoHeroes(hero1, hero2))
+        .catch(error) */
+
+    //!PROMISE ALL
+    Promise.all([
+        findHero(id1),
+        findHero(id2)
+    ])
+        .then(([hero1, hero2]) => printTwoHeroes(hero1, hero2))
         .catch(error)
+
 }
 
 
