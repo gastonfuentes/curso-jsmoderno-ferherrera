@@ -1,6 +1,8 @@
 import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
+import { loadUsersByPage } from './src/users-app/use-cases';
+import { UserApp } from './src/users-app/users-app';
 
 
 document.querySelector('#app').innerHTML = `
@@ -18,6 +20,11 @@ document.querySelector('#app').innerHTML = `
     </div>
    
   </div>
-`
+`;
+
+
+const element = document.querySelector('.card')
+
+UserApp(element)
 
 
