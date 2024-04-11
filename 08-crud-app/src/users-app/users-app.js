@@ -12,7 +12,7 @@ export const UserApp = async (element) => {
 
     const data = await usersStore.loadNextPage()
 
-    element.innerHTML = data[0].first_name
+    console.log(usersStore.getUsers());
 
 
 }

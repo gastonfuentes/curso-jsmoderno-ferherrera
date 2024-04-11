@@ -9,7 +9,11 @@ const state = {
 
 const loadNextPage = async () => {
     const data = await loadUsersByPage(state.currentPage + 1)
-    return data
+    //si no hay data entonces salimos
+    if (data.length === 0) return
+    //si existe data con usuario actualizamos el state
+    state.currentPage = state.currentPage + 1
+    state.users = data
 }
 
 const loadPreviousPage = async () => {
@@ -25,7 +29,10 @@ const reloadPage = () => {
     throw new Error('no implementado todavia')
 }
 
-
+/**
+ * 
+ * @returns {Usuarios<User[]>} devuelve una copia del state.users
+ */
 const getUsers = () => [...state.users]
 const getCurrentPage = () => state.currentPage
 
