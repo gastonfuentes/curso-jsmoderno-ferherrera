@@ -31,9 +31,13 @@ const reloadPage = () => {
 
 /**
  * 
- * @returns {Usuarios<User[]>} devuelve una copia del state.users
+ * @returns {User[]} devuelve una copia del state.users
  */
 const getUsers = () => [...state.users]
+/**
+ * 
+ * @returns {Number} devuleve el numero de pagina
+ */
 const getCurrentPage = () => state.currentPage
 
 
